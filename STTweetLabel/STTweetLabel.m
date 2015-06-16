@@ -249,7 +249,10 @@
 
 - (CGSize) intrinsicContentSize {
     CGSize size = [self suggestedFrameSizeToFitEntireStringConstrainedToWidth:CGRectGetWidth(self.frame)];
-    return CGSizeMake(size.width, size.height + 1);
+
+    UIEdgeInsets inset = [_textView contentInset];
+
+    return CGSizeMake(size.width + inset.left + inset.right, size.height + 1 + inset.top + inset.bottom);
 }
 
 #pragma mark - Private methods
